@@ -1,3 +1,15 @@
+import unittest
+
+class MyTagFinderTest(unittest.TestCase):
+
+    def test_string1(self):
+        c = main('provide strings : <p class="row" style="font-size: 16px; color: #000;">귀하가 사용하고 계신 브라우저는 스크립트를 지원하고 있지 않아서, 레이아웃 및 컨텐츠가 정상적으로 동작 하지 않을 수 있습니다. 스크립트 기능을 활성화 하시길 권장합니다.<br></p>')
+        self.assertEqual(c, False)
+
+    def test_string2(self):
+        c = main('provide strings : <p class="row" style="font-size: 16px; color: #000;">귀하가 사용하고 계신 브라우저는 스크립트를 지원하고 있지 않아서, 레이아웃 및 컨텐츠가 정상적으로 동작 하지 않을 수 있습니다. 스크립트 기능을 활성화 하시길 권장합니다.<br></p>')
+        self.assertEqual(c, ['<p>', '<br>', '</p>'])
+
 def main(string):
     result = []
     tag = ''
@@ -25,4 +37,5 @@ def main(string):
     return result if result else False
 
 
-print(main(input("provide strings : ")))
+# print(main(input("provide strings : ")))
+unittest.main()
